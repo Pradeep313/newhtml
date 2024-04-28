@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data Example</title>
+</head>
+<body>
+    <div id="dataContainer"></div>
+
+    <script>
+        // Define the URL from which you want to fetch data
+        const url = 'https://vishal6596.pythonanywhere.com/worksheet/info';
+
+        // Fetch data from the URL using the fetch() function
+        fetch(url)
+          .then(response => {
+            // Check if the response is successful (status code 200)
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            // Parse the response body as JSON
+            return response.json();
+          })
+          .then(data => {
+            // Select the element where you want to display the data
+            const dataContainer = document.getElementById('dataContainer');
+            // Update the content of the selected element with the fetched data
+            dataContainer.textContent = JSON.stringify(data);
+          })
+          .catch(error => {
+            // Handle errors that occurred during fetching
+            console.error('Error fetching data:', error);
+          });
+    </script>
+</body>
+</html>
