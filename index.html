@@ -201,7 +201,8 @@
                 let length = datas.table.rows.length;
                 console.log(length);
                 let final_dta_data=" ";
-                for (let i = 1; i < length + 1; i++) {
+                let i=1;
+                for ( i = 1; i < length + 1; i++) {
                     //let NewBoxBlogger = document.createElement("div");
                     //let space = document.createElement("br");
                     //NewBoxBlogger.id = "box" + i;
@@ -210,6 +211,7 @@
                     console.log(datas.table.rows[i - 1].c[0].v);
                     final_dta_data="<option value="+ i+">"+datas.table.rows[i - 1].c[0].v+"</option>" +"<br>"+final_dta_data ;
                     console.log(final_dta_data);
+                    
                     //let final_dta_d1= final_dta_d1+"<br>"+ final_dta_data;
                     
 
@@ -223,8 +225,8 @@
                         break;
                     }
                 };
-                blogger_name.innerHTML =final_dta_data;
-                        console.log(final_dta_data);
+                blogger_name.innerHTML =final_dta_data + '<option value="'+i+1+'" selected="selected">Select Branch</option>';
+                       // console.log(final_dta_data);
             });
 
 
