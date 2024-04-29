@@ -23,8 +23,8 @@
     <!-- <H1><FONT COLOR="purple"><CENTER><u>COLLEGE TIME TABLE</u></FONT></H1>
 <br><br><br> -->
     <form>
-        <select id="view">
-            <option value="1">B.tech4</option>
+        <select id="view" onchange"views()">
+<!--             <option value="1">B.tech4</option>
             <option value="2" selected="selected">B.tec3</option>
             <option value="3">B.tec1</option>
             <option value="4">B.tec</option>
@@ -32,13 +32,13 @@
             <option value="6">B.tech21(mecA)</option>
             <option value="7">B.tech21(cseC)</option>
             <option value="8">B.tech21(cseB)</option>
-            <option value="8">B.tech21(cseA)</option>
+            <option value="8">B.tech21(cseA)</option> -->
 
 
         </select>
     </form>
     <br>
-    <button onclick="view()">Click me</button>
+<!--     <button onclick="view()">Click me</button> -->
     <div class="pro">
         <table border="2" cellspacing="3" align="center" bordercolor="brown">
             <tr>
@@ -173,9 +173,56 @@
 
     </div>
     <script>
+        let SHEET_IDB = "1o2-dh2Shhj9wECj7sU57FJwXuiuvcI7V-eKpHyFdIxw";
+        let SHEET_TITLE = "branch";
+        let SHEET_RANGEB = "A2:A10000";
+
+        let FULL_URL_blogger =
+            "https://docs.google.com/spreadsheets/d/" +
+            SHEET_IDB +
+            "/gviz/tq?sheet=" +
+            SHEET_TITLE +
+            "&range=" +
+            SHEET_RANGEB;
+
+        fetch(FULL_URL_blogger)
+            .then((res) => res.text())
+            .then((rep) => {
+                let datas = JSON.parse(rep.substr(47).slice(0, -2));
+
+                let blogger_name = document.getElementById("view");
+                let length = datas.table.rows.length;
+                console.log(length);
+                let final_dta_data=" ";
+                for (let i = 1; i < length + 1; i++) {
+                    //let NewBoxBlogger = document.createElement("div");
+                    //let space = document.createElement("br");
+                    //NewBoxBlogger.id = "box" + i;
+                    //NewBoxBlogger.className = "box-blogger";
+                    //blogger_name.append(NewBoxBlogger);
+                    console.log(datas.table.rows[i - 1].c[0].v);
+                    final_dta_data="<option value="+ i+">"+datas.table.rows[i - 1].c[0].v+"</option>" +"<br>"+final_dta_data ;
+                    console.log(final_dta_data);
+                    //let final_dta_d1= final_dta_d1+"<br>"+ final_dta_data;
+                    
+
+                    //blogger_name.innerHTML =
+                      //  "<div class=" + "news_blog" + " > <span class=" + "hedingnews" + ">" + data.table.rows[i - 1].c[0].v + "</span> <span class=" + "arrownews" + ">" + data.table.rows[i - 1].c[1].v + "</span> <br>";
+                    //    "<option value="+i+">"+datas.table.rows[i - 1].c[0].v+"</option>";
+                    if (
+                        datas.table.rows[i - 1].c[0].v == " "
+                    ) {
+                        
+                        break;
+                    }
+                };
+                blogger_name.innerHTML =final_dta_data;
+                        console.log(final_dta_data);
+            });
 
 
-        function view() {
+
+        function views() {
             var sheetidn = document.getElementById("view");
             var value = sheetidn.value;
             var sheetidn1 = sheetidn.options[sheetidn.selectedIndex].text;
