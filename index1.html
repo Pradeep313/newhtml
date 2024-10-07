@@ -1,0 +1,595 @@
+<html>
+
+<head>
+    <title>Teacher Time Table</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            --h: 212deg;
+            --l: 43%;
+            --brandColor: hsl(var(--h), 71%, var(--l));
+            font-family: Montserrat, sans-serif;
+            margin: 0;
+            background-color: whitesmoke;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: list;
+            padding: 0 1rem;
+        }
+
+        li {
+            --stop: calc(100% / var(--length) * var(--i));
+            --l: 62%;
+            --l2: 88%;
+            --h: calc((var(--i) - 1) * (180 / var(--length)));
+            --c1: hsl(var(--h), 71%, var(--l));
+            --c2: hsl(var(--h), 71%, var(--l2));
+
+            position: relative;
+            counter-increment: list;
+            max-width: 45rem;
+            height: 150px;
+            margin: 2rem auto;
+            padding: 2rem 1rem 1rem;
+            box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        li::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--c1) var(--stop), var(--c2) var(--stop));
+        }
+
+        h3 {
+            display: flex;
+            align-items: baseline;
+            margin: 0 0 1rem;
+            color: rgb(70 70 70);
+        }
+
+        h3::before {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 auto;
+            margin-right: 1rem;
+            width: 3rem;
+            height: 3rem;
+            content: counter(list);
+            padding: 1rem;
+            border-radius: 50%;
+            background-color: var(--c1);
+            color: white;
+        }
+
+        @media (min-width: 40em) {
+            li {
+                margin: 3rem auto;
+                padding: 3rem 2rem 2rem;
+            }
+
+            h3 {
+                font-size: 2.25rem;
+                margin: 0 0 2rem;
+            }
+
+            h3::before {
+                margin-right: 1.5rem;
+            }
+        }
+    
+        
+
+        table {
+            height: 30%;
+            width: 80%;
+        }
+
+        .loader {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 50px;
+            height: 200px;
+            width: 200px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat,
+                conic-gradient(#0000 30%, #ffa516);
+            -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+            animation: l13 1s infinite linear;
+        }
+            @media (width <= 900px ){
+                  table {
+            height: 80vw;
+            width: 87vh;
+        }
+            .pro {
+
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+  
+                
+    }
+
+        @keyframes l13 {
+            100% {
+                transform: rotate(1turn)
+            }
+        }
+      
+        
+    </style>
+</head>
+
+<body>
+    <ol style="--length: 5;display:block" role="list" id="teacher_data" class="list_d_1">
+        <!-- <li style=" --i: 1">
+        <h3 id="data-1" onclick="viwer(this)">hello1</h3>
+
+
+        </li>
+        <li style="--i: 3">
+            <h3 id="data-1 " onclick="viwer(this)">hello2</h3>
+
+
+        </li>
+        <li style="--i: 3">
+            <h3 id="data-1" onclick="viwer(this)">hello3</h3>
+
+
+
+        </li> -->
+
+
+    </ol>
+    <div class="loader" style="display: none;"></div>
+
+    <!-- <H1><FONT COLOR="purple"><CENTER><u>COLLEGE TIME TABLE</u></FONT></H1>
+<br><br><br> -->
+    <form style="display: none;" class="noob">
+        <select id="view" onchange="views()" style="
+/*             position: absolute;left: 50%; */
+                height: 2%;
+    font-size: 100%;
+    width: 100%;
+    text-align: center;
+            background-color:gray;
+            ">
+            <!--             <option value="1">B.tech4</option>
+            <option value="2" selected="selected">B.tec3</option>
+            <option value="3">B.tec1</option>
+            <option value="4">B.tec</option>
+            <option value="5">B.tech21(mecB)</option>
+            <option value="6">B.tech21(mecA)</option>
+            <option value="7">B.tech21(cseC)</option>
+            <option value="8">B.tech21(cseB)</option>
+            <option value="8">B.tech21(cseA)</option> -->
+
+
+        </select>
+    </form>
+    <br><br><br><br><br><br>
+
+
+
+    <!--     <button onclick="view()">Click me</button> -->
+    <div class="pro" style="display: none;">
+        <table border="2" cellspacing="3" align="center" bordercolor="brown">
+            <tr>
+                <td align="center">
+                <td>
+                    <center>1ST<br>9:00-9:50</center>
+                </td>
+                <td>
+                    <center>2ND<br>9:50-10:40</center>
+                </td>
+                <td>
+                    <center>3RD<br>10:40-11:30</center>
+                </td>
+                <td>
+                    <center>4TH <br>11:30-12:30</center>
+                </td>
+                <td>12:30-1:30</td>
+                <td>
+                    <center>5TH<br>1:30-2:20</center>
+                </td>
+                <td>
+                    <center>6Th<br>2:20-3:10</center>
+                </td>
+                <td>
+                    <center>7TH <br>3:10-4:00</center>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">MONDAY</td>
+                <td align="center" id="box11">
+                <td align="center" id="box12">
+                    <br>
+                </td>
+                <td align="center" id="box13">
+                    <br>
+                </td>
+                <td align="center" id="box14">
+                    <br>
+                </td>
+                <td rowspan="6" align="center">L<br>U<br>N<br>C<br>H</td>
+                <td align="center" id="box16">
+                    <br>
+                </td>
+                <td align="center" id="box17">
+                    <br>
+                </td>
+                <td align="center" id="box18"></td>
+            </tr>
+            <tr>
+                <td align="center">TUESDAY</td>
+                <td align="center">
+                    <font id="box21"><br>
+                </td>
+                <td align="center">
+                    <font id="box22"><br>
+                </td>
+                <td align="center">
+                    <font id="box23"><br>
+                </td>
+                <td align="center" id="box24"></td>
+                <td align="center">
+                    <font id="box26"><BR>
+                </td>
+                <td align="center">
+                    <font id="box27"><br>
+                </td>
+                <td align="center" id="box28"></td>
+            </tr>
+            <tr>
+                <td align="center">WEDNESDAY</td>
+                <td align="center">
+                    <font id="box31"><br>
+                </td>
+                <td align="center">
+                    <font id="box32"><BR>
+                </td>
+                <td align="center">
+                    <font id="box33"><br>
+                </td>
+                <td align="center" id="box34"></td>
+                <td colspan="1" align="center">
+                    <font id="box36">
+                </td>
+                <td align="center" id="box37">
+                    <br>
+                </td>
+                <td align="center">
+                    <font id="box38"><br>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">THURSDAY</td>
+                <td align="center" id="box41"><br></td>
+                <td align="center">
+                    <font id="box42"><br>
+                </td>
+                <td align="center">
+                    <font id="box43"><BR>
+                </td>
+                <td align="center" id="box44"></td>
+                <td align="center">
+                    <font id="box46"><br>
+                </td>
+                <td align="center">
+                    <font id="box47"><br>
+                </td>
+                <td align="center" id="box48"></td>
+            </tr>
+            <tr>
+                <td align="center">FRIDAY</td>
+                <td align="center">
+                    <font id="box51"><BR>
+                </td>
+                <td align="center">
+                    <font id="box52"><br>
+                </td>
+                <td align="center">
+                    <font id="box53"><br>
+                </td>
+                <td align="center" id="box54"></td>
+                <td align="center">
+                    <font id="box56"><br>
+                </td>
+                <td align="center">
+                    <font id="box57"><br>
+                </td>
+                <td align="center" id="box58"></td>
+            </tr>
+
+        </table>
+        <!-- <button onclick="view()" >Click me</button> -->
+
+    </div>
+    <script>
+
+        function hellos() {
+            console.log("hi");
+        };
+        let SHEET_IDB = "1o2-dh2Shhj9wECj7sU57FJwXuiuvcI7V-eKpHyFdIxw";
+        let SHEET_TITLE = "branch";
+        let SHEET_RANGEB = "A2:A10000";
+
+        let FULL_URL_blogger =
+            "https://docs.google.com/spreadsheets/d/" +
+            SHEET_IDB +
+            "/gviz/tq?sheet=" +
+            SHEET_TITLE +
+            "&range=" +
+            SHEET_RANGEB;
+
+        fetch(FULL_URL_blogger)
+            .then((res) => res.text())
+            .then((rep) => {
+                let datas = JSON.parse(rep.substr(47).slice(0, -2));
+
+                let blogger_name = document.getElementById("view");
+                let teacher_data = document.getElementById("teacher_data");
+                let length = datas.table.rows.length;
+                console.log(length);
+
+                let i = 1;
+                let data_list = [];
+                for (i = 1; i < length + 1; i++) {
+                    //let NewBoxBlogger = document.createElement("div");
+                    //let space = document.createElement("br");
+                    //NewBoxBlogger.id = "box" + i;
+                    //NewBoxBlogger.className = "box-blogger";
+                    //blogger_name.append(NewBoxBlogger);
+                    //console.log(datas.table.rows[i - 1].c[0].v);
+
+                    data_list.push(datas.table.rows[i - 1].c[0].v);
+
+                    // final_dta_data="<option value="+ i+">"+datas.table.rows[i - 1].c[0].v+"</option>" +"<br>"+final_dta_data ;
+                    //console.log(final_dta_data);
+
+                    //let final_dta_d1= final_dta_d1+"<br>"+ final_dta_data;
+
+
+                    //blogger_name.innerHTML =
+                    //  "<div class=" + "news_blog" + " > <span class=" + "hedingnews" + ">" + data.table.rows[i - 1].c[0].v + "</span> <span class=" + "arrownews" + ">" + data.table.rows[i - 1].c[1].v + "</span> <br>";
+                    //    "<option value="+i+">"+datas.table.rows[i - 1].c[0].v+"</option>";
+                    if (
+                        datas.table.rows[i - 1].c[0].v == " "
+                    ) {
+
+                        break;
+                    }
+                };
+                //console.log(data_list);
+                function remove_items(arr) {
+                    let item_each_data = {};
+
+                    arr.forEach(function (i) {
+                        if (!item_each_data[i]) {
+                            item_each_data[i] = true;
+                        }
+                    });
+                    return Object.keys(item_each_data);
+
+
+                }
+                let duplicate_elements = [];
+                duplicate_elements = remove_items(data_list);
+                console.log(duplicate_elements);
+                console.log(duplicate_elements.length);
+                let final_dta_data = "";
+                let te_dta_d = "";
+                length_d = duplicate_elements.length
+
+                for (let i = 0; i < duplicate_elements.length; i++) {
+                    length = length - 1;
+
+                    final_dta_data = "<option value=" + i + ">" + duplicate_elements[duplicate_elements.length - i - 1] + "</option>" + final_dta_data;
+                    te_dta_d = "<li style=" + '"--i:' + length + '" onclick="viwer(this)' + '"' + '><h3>' + duplicate_elements[duplicate_elements.length - i - 1] + "</h3></li>" + te_dta_d
+
+                };
+
+                teacher_data.innerHTML = te_dta_d;
+                console.log(te_dta_d);
+
+
+                blogger_name.innerHTML = '<option value="' + i + 1 + '" selected="selected">Select Teacher Name</option>' + final_dta_data;
+
+                console.log(final_dta_data);
+
+            });
+
+
+        function viwer(e) {
+            //var noobs = document.getElementsByClassName("noob");
+            var pros = document.getElementsByClassName("pro");
+            var teacherdatas = document.getElementsByClassName("list_d_1");
+            document.querySelector(".loader").style.display = "block";
+            document.querySelector(".list_d_1").style.display = "none";
+            
+
+
+
+
+
+
+            console.log(e.innerText);
+            text_data = e.innerText;
+            //noobs.style.display="block";
+            showview(text_data);
+
+
+
+            //noobs.style.display="block";
+            //pros.style.display="block";
+            //teacherdatas.style.display="none";
+
+
+
+
+
+
+        };
+
+
+        function views() {
+            var sheetidn = document.getElementById("view");
+            var value = sheetidn.value;
+            var sheetidn1 = sheetidn.options[sheetidn.selectedIndex].text;
+            console.log(sheetidn1);
+            showview(sheetidn1);
+
+
+        };
+
+        function showview(sheetidn1) {
+
+            let SHEET_IDN = "1JvLXp8yS5rUviW4gEKfmExyki4fmIfIDHQEqZr_161E";
+            //let SHEET_TITLEE = "B.tech4";
+            let SHEET_RANGEN = "A1:I6";
+            let FULL_URL_news =
+                //"https://docs.google.com/spreadsheets/d/1JvLXp8yS5rUviW4gEKfmExyki4fmIfIDHQEqZr_161E/gviz/tq?sheet=B.tech4&range=A1:I6";
+                // https://docs.google.com/spreadsheets/d/1nnD_JIr2XGb1oVrzOe0YFRQvW-C36kNJxI0DEXFpjEg/gviz/tq?sheet=A2:B10000
+                "https://docs.google.com/spreadsheets/d/" +
+                SHEET_IDN +
+                "/gviz/tq?sheet=" +
+                sheetidn1 +
+                "&range=" +
+                SHEET_RANGEN;
+
+            fetch(FULL_URL_news)
+                .then((res) => res.text())
+                .then((rep) => {
+                    let data_news = JSON.parse(rep.substr(47).slice(0, -2));
+                    //console.log(data_news);
+                    let length_news = data_news.table.rows.length;
+                    //console.log(length_news);
+                    //console.log(data_news.table.rows[1].c[1].v);
+                    let box11 = document.getElementById("box11");
+                    let box12 = document.getElementById("box12");
+                    let box13 = document.getElementById("box13");
+                    let box14 = document.getElementById("box14");
+                    let box16 = document.getElementById("box16");
+                    let box17 = document.getElementById("box17");
+                    let box18 = document.getElementById("box18");
+                    let box21 = document.getElementById("box21");
+                    let box22 = document.getElementById("box22");
+                    let box23 = document.getElementById("box23");
+                    let box24 = document.getElementById("box24");
+                    let box26 = document.getElementById("box26");
+                    let box27 = document.getElementById("box27");
+                    let box28 = document.getElementById("box28");
+                    let box31 = document.getElementById("box31");
+                    let box32 = document.getElementById("box32");
+                    let box33 = document.getElementById("box33");
+                    let box34 = document.getElementById("box34");
+                    let box36 = document.getElementById("box36");
+                    let box37 = document.getElementById("box37");
+                    let box38 = document.getElementById("box38");
+                    let box41 = document.getElementById("box41");
+                    let box42 = document.getElementById("box42");
+                    let box43 = document.getElementById("box43");
+                    let box44 = document.getElementById("box44");
+                    let box46 = document.getElementById("box46");
+                    let box47 = document.getElementById("box47");
+                    let box48 = document.getElementById("box48");
+                    let box51 = document.getElementById("box51");
+                    let box52 = document.getElementById("box52");
+                    let box53 = document.getElementById("box53");
+                    let box54 = document.getElementById("box54");
+                    let box56 = document.getElementById("box56");
+                    let box57 = document.getElementById("box57");
+                    let box58 = document.getElementById("box58");
+                    box11.innerHTML = data_news.table.rows[1].c[1].v;
+                    box12.innerHTML = data_news.table.rows[1].c[2].v;
+                    box13.innerHTML = data_news.table.rows[1].c[3].v;
+                    box14.innerHTML = data_news.table.rows[1].c[4].v;
+                    box16.innerHTML = data_news.table.rows[1].c[6].v;
+                    box17.innerHTML = data_news.table.rows[1].c[7].v;
+                    box18.innerHTML = data_news.table.rows[1].c[8].v;
+                    box21.innerHTML = data_news.table.rows[2].c[1].v;
+                    box22.innerHTML = data_news.table.rows[2].c[2].v;
+                    box23.innerHTML = data_news.table.rows[2].c[3].v;
+                    box24.innerHTML = data_news.table.rows[2].c[4].v;
+                    box26.innerHTML = data_news.table.rows[2].c[6].v;
+                    box27.innerHTML = data_news.table.rows[2].c[7].v;
+                    box28.innerHTML = data_news.table.rows[2].c[8].v;
+                    box31.innerHTML = data_news.table.rows[3].c[1].v;
+                    box32.innerHTML = data_news.table.rows[3].c[2].v;
+                    box33.innerHTML = data_news.table.rows[3].c[3].v;
+                    box34.innerHTML = data_news.table.rows[3].c[4].v;
+                    box36.innerHTML = data_news.table.rows[3].c[6].v;
+                    box37.innerHTML = data_news.table.rows[3].c[7].v;
+                    box38.innerHTML = data_news.table.rows[3].c[8].v;
+                    box41.innerHTML = data_news.table.rows[4].c[1].v;
+                    box42.innerHTML = data_news.table.rows[4].c[2].v;
+                    box43.innerHTML = data_news.table.rows[4].c[3].v;
+                    box44.innerHTML = data_news.table.rows[4].c[4].v;
+                    box46.innerHTML = data_news.table.rows[4].c[6].v;
+                    box47.innerHTML = data_news.table.rows[4].c[7].v;
+                    box48.innerHTML = data_news.table.rows[4].c[8].v;
+                    box51.innerHTML = data_news.table.rows[5].c[1].v;
+                    box52.innerHTML = data_news.table.rows[5].c[2].v;
+                    box53.innerHTML = data_news.table.rows[5].c[3].v;
+                    box54.innerHTML = data_news.table.rows[5].c[4].v;
+                    box56.innerHTML = data_news.table.rows[5].c[6].v;
+                    box57.innerHTML = data_news.table.rows[5].c[7].v;
+                    box58.innerHTML = data_news.table.rows[5].c[8].v;
+
+
+
+
+
+
+
+
+
+                });
+            
+                setTimeout(display_view, 3000);
+
+            
+            
+
+
+        }
+        ;
+
+    function display_view(){
+        document.querySelector(".loader").style.display = "none";
+           
+        document.querySelector(".noob").style.display = "block";
+        document.querySelector(".pro").style.display = "block";
+    }
+
+    </script>
+</body>
+
+</html>
