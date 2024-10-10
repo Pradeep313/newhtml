@@ -1,8 +1,13 @@
-<html>
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title> Student Teacher Time Table</title>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Time Tablet</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
     <style>
         @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
@@ -17,6 +22,7 @@
             font-family: Montserrat, sans-serif;
             margin: 0;
             background-color: whitesmoke;
+            position: absolute;
         }
 
         p {
@@ -40,8 +46,11 @@
 
             position: relative;
             counter-increment: list;
-            max-width: 45rem;
-            height: 150px;
+            width: 50vw;
+            left: 25vw;
+            text-align: center;
+
+            height: auto;
             margin: 2rem auto;
             padding: 2rem 1rem 1rem;
             box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
@@ -83,34 +92,15 @@
             color: white;
         }
 
-       
-    
-        
-
-/*         table {
-            height: 30%;
-            width: 80%;
-        } */
-         table {
-            height: 80vw;
-            width: 87vh;
-        }
-            .pro {
-
-
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(90deg);
-        }
-  
         .loader {
-            position: absolute;
-            top: 40%;
-            left: 40%;
-            width: 50px;
+
+            position: relative;
+            top: 35vh;
+            left: 35vw;
+
             height: 200px;
             width: 200px;
+
             aspect-ratio: 1;
             border-radius: 50%;
             background:
@@ -119,32 +109,66 @@
             -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
             animation: l13 1s infinite linear;
         }
-/*             @media (width <= 900px ){
-                  table {
-            height: 80vw;
-            width: 87vh;
+
+
+
+
+
+        .noob {
+
+            width: 100%;
+
+            height: 50%;
+            background-color: grey;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
         }
-            .pro {
+
+        .ids {
 
 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(90deg);
-        } */
-  
-                
-    }
+            width: 100%;
 
-        @keyframes l13 {
-            100% {
-                transform: rotate(1turn)
-            }
+
+            text-align: center;
+            background-color: grey;
+            color: black;
+            justify-content: center;
+            align-items: center;
         }
-       @media (min-width: 40em) {
+
+        table {
+            border: 2px solid black;
+
+
+
+
+
+        }
+
+        th,
+        td {
+            border: 1px solid #000000;
+            padding: 10px;
+
+            text-align: left;
+            text-align: center;
+
+        }
+
+
+
+        @media all and (width <768px) {
             li {
                 margin: 3rem auto;
                 padding: 3rem 2rem 2rem;
+
+                text-align: center;
+                width: 100vw;
+                left: 0;
             }
 
             h3 {
@@ -155,196 +179,139 @@
             h3::before {
                 margin-right: 1.5rem;
             }
+
+
+            .table {
+                border: 2px solid black;
+                position: relative;
+                rotate: 90deg;
+                width: 50vh;
+                height: 50vw;
+                top: 50vw;
+
+
+
+            }
+
+            th,
+            td {
+                border: 1px solid #000000;
+
+
+                text-align: center;
+
+
+            }
+
         }
-        
+
+
+        @keyframes l13 {
+            100% {
+                transform: rotate(1turn)
+            }
+        }
     </style>
+
+
 </head>
 
 <body>
-    <ol style="--length: 5;display:block" role="list" id="teacher_data" class="list_d_1">
-        <!-- <li style=" --i: 1">
-        <h3 id="data-1" onclick="viwer(this)">hello1</h3>
-
-
-        </li>
-        <li style="--i: 3">
-            <h3 id="data-1 " onclick="viwer(this)">hello2</h3>
-
-
-        </li>
-        <li style="--i: 3">
-            <h3 id="data-1" onclick="viwer(this)">hello3</h3>
-
-
-
-        </li> -->
-
-
-    </ol>
-    <div class="loader" style="display: none;"></div>
-
-    <!-- <H1><FONT COLOR="purple"><CENTER><u>COLLEGE TIME TABLE</u></FONT></H1>
-<br><br><br> -->
-    <form style="display: none;" class="noob">
-        <select id="view" onchange="views()" style="
-/*             position: absolute;left: 50%; */
-                height: 2%;
-    font-size: 100%;
-    width: 100%;
-    text-align: center;
-            background-color:gray;
-            ">
-            <!--             <option value="1">B.tech4</option>
-            <option value="2" selected="selected">B.tec3</option>
-            <option value="3">B.tec1</option>
-            <option value="4">B.tec</option>
-            <option value="5">B.tech21(mecB)</option>
-            <option value="6">B.tech21(mecA)</option>
-            <option value="7">B.tech21(cseC)</option>
-            <option value="8">B.tech21(cseB)</option>
-            <option value="8">B.tech21(cseA)</option> -->
-
+    <ol style="--length: 5;display:block" role="list" id="teacher_data" class="list_d_1"></ol>
+    <form class="noob" style="display: none;">
+        <select id="view" onchange="views() " class="ids">
 
         </select>
     </form>
-    <br><br><br><br><br><br>
+    <div class="loader " style="display: none;"></div>
+
+    <div class="table-view pro" style="display: none;">
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- <div id="name_time"> </div> -->
+
+        <table class="table ">
+
+            <tr>
+                <th>DAY</th>
+                <th id="box01"></th>
+                <th id="box02"></th>
+                <th id="box03"></th>
+                <th id="box04"></th>
+                <th id="box05"></th>
+                <th id="box06"></th>
+                <th id="box07"></th>
+                <th id="box08"></th>
+            </tr>
 
 
+            <tr>
 
-    <!--     <button onclick="view()">Click me</button> -->
-    <div class="pro" style="display: none;">
-        <table border="2" cellspacing="3" align="center" bordercolor="brown">
-            <tr>
-                <td align="center">
-                <td>
-                    <center>1ST<br>9:00-9:50</center>
-                </td>
-                <td>
-                    <center>2ND<br>9:50-10:40</center>
-                </td>
-                <td>
-                    <center>3RD<br>10:40-11:30</center>
-                </td>
-                <td>
-                    <center>4TH <br>11:30-12:30</center>
-                </td>
-                <td>12:30-1:30</td>
-                <td>
-                    <center>5TH<br>1:30-2:20</center>
-                </td>
-                <td>
-                    <center>6Th<br>2:20-3:10</center>
-                </td>
-                <td>
-                    <center>7TH <br>3:10-4:00</center>
-                </td>
+                <td id="box10"></td>
+                <td id="box11"></td>
+                <td id="box12"></td>
+                <td id="box13"></td>
+                <td id="box14"></td>
+                <td id="box15"></td>
+                <td id="box16"></td>
+                <td id="box17"></td>
+                <td id="box18"></td>
             </tr>
             <tr>
-                <td align="center">MONDAY</td>
-                <td align="center" id="box11">
-                <td align="center" id="box12">
-                    <br>
-                </td>
-                <td align="center" id="box13">
-                    <br>
-                </td>
-                <td align="center" id="box14">
-                    <br>
-                </td>
-                <td rowspan="6" align="center">L<br>U<br>N<br>C<br>H</td>
-                <td align="center" id="box16">
-                    <br>
-                </td>
-                <td align="center" id="box17">
-                    <br>
-                </td>
-                <td align="center" id="box18"></td>
+
+                <td id="box20"></td>
+                <td id="box21"></td>
+                <td id="box22"></td>
+                <td id="box23"></td>
+                <td id="box24"></td>
+                <td id="box25"></td>
+                <td id="box26"></td>
+                <td id="box27"></td>
+                <td id="box28"></td>
             </tr>
             <tr>
-                <td align="center">TUESDAY</td>
-                <td align="center">
-                    <font id="box21"><br>
-                </td>
-                <td align="center">
-                    <font id="box22"><br>
-                </td>
-                <td align="center">
-                    <font id="box23"><br>
-                </td>
-                <td align="center" id="box24"></td>
-                <td align="center">
-                    <font id="box26"><BR>
-                </td>
-                <td align="center">
-                    <font id="box27"><br>
-                </td>
-                <td align="center" id="box28"></td>
+                <td id="box30"></td>
+                <td id="box31"></td>
+                <td id="box32"></td>
+                <td id="box33"></td>
+                <td id="box34"></td>
+                <td id="box35"></td>
+                <td id="box36"></td>
+                <td id="box37"></td>
+                <td id="box38"></td>
             </tr>
             <tr>
-                <td align="center">WEDNESDAY</td>
-                <td align="center">
-                    <font id="box31"><br>
-                </td>
-                <td align="center">
-                    <font id="box32"><BR>
-                </td>
-                <td align="center">
-                    <font id="box33"><br>
-                </td>
-                <td align="center" id="box34"></td>
-                <td colspan="1" align="center">
-                    <font id="box36">
-                </td>
-                <td align="center" id="box37">
-                    <br>
-                </td>
-                <td align="center">
-                    <font id="box38"><br>
-                </td>
+
+                <td id="box40"></td>
+                <td id="box41"></td>
+                <td id="box42"></td>
+                <td id="box43"></td>
+                <td id="box44"></td>
+                <td id="box45"></td>
+                <td id="box46"></td>
+                <td id="box47"></td>
+                <td id="box48"></td>
             </tr>
             <tr>
-                <td align="center">THURSDAY</td>
-                <td align="center" id="box41"><br></td>
-                <td align="center">
-                    <font id="box42"><br>
-                </td>
-                <td align="center">
-                    <font id="box43"><BR>
-                </td>
-                <td align="center" id="box44"></td>
-                <td align="center">
-                    <font id="box46"><br>
-                </td>
-                <td align="center">
-                    <font id="box47"><br>
-                </td>
-                <td align="center" id="box48"></td>
+
+                <td id="box50"></td>
+                <td id="box51"></td>
+                <td id="box52"></td>
+                <td id="box53"></td>
+                <td id="box54"></td>
+                <td id="box55"></td>
+                <td id="box56"></td>
+                <td id="box57"></td>
+                <td id="box58"></td>
             </tr>
-            <tr>
-                <td align="center">FRIDAY</td>
-                <td align="center">
-                    <font id="box51"><BR>
-                </td>
-                <td align="center">
-                    <font id="box52"><br>
-                </td>
-                <td align="center">
-                    <font id="box53"><br>
-                </td>
-                <td align="center" id="box54"></td>
-                <td align="center">
-                    <font id="box56"><br>
-                </td>
-                <td align="center">
-                    <font id="box57"><br>
-                </td>
-                <td align="center" id="box58"></td>
-            </tr>
+
+            <!-- More rows for other days -->
 
         </table>
-        <!-- <button onclick="view()" >Click me</button> -->
-
     </div>
+
     <script>
 
         function hellos() {
@@ -446,7 +413,7 @@
             var teacherdatas = document.getElementsByClassName("list_d_1");
             document.querySelector(".loader").style.display = "block";
             document.querySelector(".list_d_1").style.display = "none";
-            
+
 
 
 
@@ -460,11 +427,6 @@
 
 
 
-            //noobs.style.display="block";
-            //pros.style.display="block";
-            //teacherdatas.style.display="none";
-
-
 
 
 
@@ -475,9 +437,14 @@
         function views() {
             var sheetidn = document.getElementById("view");
             var value = sheetidn.value;
+
+
             var sheetidn1 = sheetidn.options[sheetidn.selectedIndex].text;
             console.log(sheetidn1);
             showview(sheetidn1);
+
+
+
 
 
         };
@@ -501,106 +468,69 @@
                 .then((res) => res.text())
                 .then((rep) => {
                     let data_news = JSON.parse(rep.substr(47).slice(0, -2));
+
                     //console.log(data_news);
                     let length_news = data_news.table.rows.length;
+                    console.log(length_news);
+                    if (length_news == 2) {
+                        alert(" not found in list");
+                        document.querySelector(".loader").style.display = "none";
+
+                        document.querySelector(".noob").style.display = "none";
+                        document.querySelector(".pro").style.display = "none";
+                        document.querySelector(".list_d_1").style.display = "block";
+
+
+
+
+                    }
                     //console.log(length_news);
                     //console.log(data_news.table.rows[1].c[1].v);
-                    let box11 = document.getElementById("box11");
-                    let box12 = document.getElementById("box12");
-                    let box13 = document.getElementById("box13");
-                    let box14 = document.getElementById("box14");
-                    let box16 = document.getElementById("box16");
-                    let box17 = document.getElementById("box17");
-                    let box18 = document.getElementById("box18");
-                    let box21 = document.getElementById("box21");
-                    let box22 = document.getElementById("box22");
-                    let box23 = document.getElementById("box23");
-                    let box24 = document.getElementById("box24");
-                    let box26 = document.getElementById("box26");
-                    let box27 = document.getElementById("box27");
-                    let box28 = document.getElementById("box28");
-                    let box31 = document.getElementById("box31");
-                    let box32 = document.getElementById("box32");
-                    let box33 = document.getElementById("box33");
-                    let box34 = document.getElementById("box34");
-                    let box36 = document.getElementById("box36");
-                    let box37 = document.getElementById("box37");
-                    let box38 = document.getElementById("box38");
-                    let box41 = document.getElementById("box41");
-                    let box42 = document.getElementById("box42");
-                    let box43 = document.getElementById("box43");
-                    let box44 = document.getElementById("box44");
-                    let box46 = document.getElementById("box46");
-                    let box47 = document.getElementById("box47");
-                    let box48 = document.getElementById("box48");
-                    let box51 = document.getElementById("box51");
-                    let box52 = document.getElementById("box52");
-                    let box53 = document.getElementById("box53");
-                    let box54 = document.getElementById("box54");
-                    let box56 = document.getElementById("box56");
-                    let box57 = document.getElementById("box57");
-                    let box58 = document.getElementById("box58");
-                    box11.innerHTML = data_news.table.rows[1].c[1].v;
-                    box12.innerHTML = data_news.table.rows[1].c[2].v;
-                    box13.innerHTML = data_news.table.rows[1].c[3].v;
-                    box14.innerHTML = data_news.table.rows[1].c[4].v;
-                    box16.innerHTML = data_news.table.rows[1].c[6].v;
-                    box17.innerHTML = data_news.table.rows[1].c[7].v;
-                    box18.innerHTML = data_news.table.rows[1].c[8].v;
-                    box21.innerHTML = data_news.table.rows[2].c[1].v;
-                    box22.innerHTML = data_news.table.rows[2].c[2].v;
-                    box23.innerHTML = data_news.table.rows[2].c[3].v;
-                    box24.innerHTML = data_news.table.rows[2].c[4].v;
-                    box26.innerHTML = data_news.table.rows[2].c[6].v;
-                    box27.innerHTML = data_news.table.rows[2].c[7].v;
-                    box28.innerHTML = data_news.table.rows[2].c[8].v;
-                    box31.innerHTML = data_news.table.rows[3].c[1].v;
-                    box32.innerHTML = data_news.table.rows[3].c[2].v;
-                    box33.innerHTML = data_news.table.rows[3].c[3].v;
-                    box34.innerHTML = data_news.table.rows[3].c[4].v;
-                    box36.innerHTML = data_news.table.rows[3].c[6].v;
-                    box37.innerHTML = data_news.table.rows[3].c[7].v;
-                    box38.innerHTML = data_news.table.rows[3].c[8].v;
-                    box41.innerHTML = data_news.table.rows[4].c[1].v;
-                    box42.innerHTML = data_news.table.rows[4].c[2].v;
-                    box43.innerHTML = data_news.table.rows[4].c[3].v;
-                    box44.innerHTML = data_news.table.rows[4].c[4].v;
-                    box46.innerHTML = data_news.table.rows[4].c[6].v;
-                    box47.innerHTML = data_news.table.rows[4].c[7].v;
-                    box48.innerHTML = data_news.table.rows[4].c[8].v;
-                    box51.innerHTML = data_news.table.rows[5].c[1].v;
-                    box52.innerHTML = data_news.table.rows[5].c[2].v;
-                    box53.innerHTML = data_news.table.rows[5].c[3].v;
-                    box54.innerHTML = data_news.table.rows[5].c[4].v;
-                    box56.innerHTML = data_news.table.rows[5].c[6].v;
-                    box57.innerHTML = data_news.table.rows[5].c[7].v;
-                    box58.innerHTML = data_news.table.rows[5].c[8].v;
+
+                    for (let row = 0; row < data_news.table.rows.length; row++) {
+                        for (let col = 0; col <= 8; col++) {
+                            let cellId = `box${row}${col}`;
+                            let cellElement = document.getElementById(cellId);
+                            if (cellElement) {
+                                cellElement.innerHTML = data_news.table.rows[row].c[col].v;
+                            }
+                        }
+                    }
 
 
 
 
 
+                if (length_news != 2) {
+                        setTimeout(display_view, 3000);
+                }
+        
 
 
 
 
                 });
-            
-                setTimeout(display_view, 3000);
 
-            
-            
+
+
+
+
+           
+
 
 
         }
         ;
 
-    function display_view(){
-        document.querySelector(".loader").style.display = "none";
-           
-        document.querySelector(".noob").style.display = "block";
-        document.querySelector(".pro").style.display = "block";
-    }
+        function display_view() {
+            document.querySelector(".loader").style.display = "none";
+
+            document.querySelector(".noob").style.display = "block";
+            document.querySelector(".pro").style.display = "block";
+        }
+
+
+
 
     </script>
 </body>
