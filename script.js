@@ -150,7 +150,7 @@ function views() {
 };
 
 function showview(sheetidn1) {
-    document.body.style.zoom=0.7;
+    document.body.style.zoom=0.6;
 
     let SHEET_IDN = "1JvLXp8yS5rUviW4gEKfmExyki4fmIfIDHQEqZr_161E";
     //let SHEET_TITLEE = "B.tech4";
