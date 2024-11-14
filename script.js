@@ -162,6 +162,7 @@ function views() {
 };
 
 function showview(sheetidn1) {
+    document.querySelector(".alerts").style.display = "none";
     document.body.style.zoom=0.6;
 
     let SHEET_IDN = "1JvLXp8yS5rUviW4gEKfmExyki4fmIfIDHQEqZr_161E";
@@ -240,6 +241,7 @@ function showview(sheetidn1) {
 
 function display_view() {
     document.querySelector(".loader").style.display = "none";
+    document.querySelector(".alerts").style.display = "none"
 
    
     document.querySelector(".containers").style.display = "block";
