@@ -14,8 +14,20 @@ function searchFunction() {
     }
 }
 
-function hellos() {
-    console.log("hi");
+hello();
+function hello() {
+
+   height = window.innerHeight;
+   width = window.innerWidth;
+   console.log(height,width);
+    try{
+       document.getElementById("hellos").innerHTML=height+ ' '+ width;
+    }
+    catch(err){
+    console.log(err);
+        
+    }
+   
 };
 let SHEET_IDB = "1o2-dh2Shhj9wECj7sU57FJwXuiuvcI7V-eKpHyFdIxw";
 let SHEET_TITLE = "branch";
