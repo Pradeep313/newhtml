@@ -14,7 +14,7 @@ function searchFunction() {
     }
 }
 
-hello();
+
 function hello() {
 
    height = window.innerHeight;
@@ -161,9 +161,12 @@ function views() {
 
 };
 
+
 function showview(sheetidn1) {
     document.querySelector(".alerts").style.display = "none";
-    document.body.style.zoom=0.6;
+    
+
+        
 
     let SHEET_IDN = "1JvLXp8yS5rUviW4gEKfmExyki4fmIfIDHQEqZr_161E";
     //let SHEET_TITLEE = "B.tech4";
@@ -241,6 +244,14 @@ function showview(sheetidn1) {
 
 function display_view() {
     document.querySelector(".loader").style.display = "none";
+    let widthh =window.innerWidth;
+    if (widthh <= 360) {
+        document.body.style.zoom=0.55;
+
+    }
+    else {
+        console.log("nothing")
+    }
     document.querySelector(".alerts").style.display = "none"
 
    

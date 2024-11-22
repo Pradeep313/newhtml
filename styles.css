@@ -110,7 +110,7 @@ button:hover {
     
     position: absolute;
     top: 40%;
-    left: 80vw;
+    left: 50vw;
 
     
 }
@@ -174,7 +174,7 @@ td {
 
     }
     .loader{
-        left: 65vw;
+        left: 40vw;
     }
 
 }
